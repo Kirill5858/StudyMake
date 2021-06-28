@@ -1,11 +1,18 @@
-# Простой make - file без переменных, для релиза и дебага
+# РџСЂРѕСЃС‚РѕР№ make-file Р±РµР· РїРµСЂРµРјРµРЅРЅС‹С…, РґР»СЏ СЂРµР»РёР·Р° Рё РґРµР±Р°РіР°
+
 .PHONY: all debug release clean
-all : debug release
-debug : hello - dbg
-hello - dbg : hello.cpp
-g++ - g - O0 hello.cpp - o hello - dbg - Wall
-release : hello
-hello : hello.cpp
-g++ - O2 hello.cpp - o hello - DNDEBUG - Wall
-clean :
-rm - fm hello - dbg
+
+all: debug release
+
+debug: hello-dbg
+
+hello-dbg: hello.cpp
+	g++ -g -O0 hello.cpp -o hello-dbg -Wall
+
+release: hello
+
+hello: hello.cpp
+	g++ -O2 hello.cpp -o hello -DNDEBUG -Wall
+
+clean:
+	rm -fm hello-dbg
